@@ -25,7 +25,7 @@ namespace My.Calculator
 
         private void button10_Click(object sender, EventArgs e)
         {
-            SendToBack();
+            Visible = false;
         }
 
         private void button_Click(object sender, EventArgs e)
@@ -53,6 +53,8 @@ namespace My.Calculator
             if (e.KeyCode == Keys.Enter)
             {
                 button15.PerformClick();
+                textBox_Result.SelectionStart = textBox_Result.Text.Length;
+                textBox_Result.SelectionLength = 0;
             }
         }
 
@@ -90,16 +92,9 @@ namespace My.Calculator
 
         }
 
-        private void buttonBack_KeyDown(object sender, KeyEventArgs e)
+        private void buttonBack_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (e.KeyCode == Keys.Back)
-                    textBox_Result.Text = textBox_Result.Text.Substring(0, textBox_Result.Text.Length - 1);
-                else
-                     textBox_Result.Text = textBox_Result.Text + e.KeyCode.ToString().ToLower();
-            }
-            catch { }
+            textBox_Result.Focus();
         }
     }
 }

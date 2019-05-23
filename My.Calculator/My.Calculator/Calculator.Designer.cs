@@ -62,8 +62,10 @@
             this.textBox_Result.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_Result.Location = new System.Drawing.Point(215, 141);
             this.textBox_Result.Name = "textBox_Result";
+            this.textBox_Result.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox_Result.Size = new System.Drawing.Size(257, 26);
             this.textBox_Result.TabIndex = 59;
+            this.textBox_Result.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox_Result.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Result_KeyDown);
             // 
             // button15
@@ -422,7 +424,7 @@
             this.buttonBack.Size = new System.Drawing.Size(686, 470);
             this.buttonBack.TabIndex = 66;
             this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonBack_KeyDown);
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // Calculator
             // 

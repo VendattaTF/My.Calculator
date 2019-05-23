@@ -14,11 +14,12 @@ namespace My.Calculator
 {
     public partial class Graph : UserControl
     {
-       
+
         public Graph()
         {
             InitializeComponent();
-            
+            button1.PerformClick();
+            this.chart1.MouseWheel += chart1_MouseWheel;
         }
 
         float xmax = 12;
@@ -54,6 +55,9 @@ namespace My.Calculator
             chart1.Series["Hallo"].ChartType = SeriesChartType.Line;
             chart1.Series["Hallo"].Color = Color.Blue;
 
+            
+            
+
 
             chart1.Series.Add("AxisX");
             chart1.Series["AxisX"].ChartType = SeriesChartType.Line;
@@ -71,30 +75,39 @@ namespace My.Calculator
             CA.AxisX.ScaleView.Zoomable = true;
             CA.CursorX.AutoScroll = true;
             CA.CursorX.IsUserSelectionEnabled = true;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Format = ("#0.00");
+            chart1.ChartAreas[0].AxisY.LabelStyle.Format = ("#0.00");
 
             try
             {
                 Argument x = new Argument("x");
                 Expression g = new Expression(textBox1.Text, x);
+                x.setArgumentValue(xmin);
+                double y;
+                
+                
 
-                for (double i = xmin; i <= xmax; i += 0.1F)
+                for (double i = xmin; i <= xmax; i += 0.01F)
                 {
 
                     x.setArgumentValue(i);
-                    double y = g.calculate();
+                    y = g.calculate();
                     if (Math.Abs(y) > 99999 || Math.Abs(y) < -99999)
                     { }
                     else
+                    { 
                         chart1.Series["Hallo"].Points.AddXY(i, y);
+                    }
 
                 }
-                textBox1.BackColor = Color.White;
+                
+                
             }
             catch
             {
-                textBox2.BackColor = Color.Red;
+               
             }
-        
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -185,10 +198,10 @@ namespace My.Calculator
             }
             catch { }
 
-            
+
         }
 
-        
+
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -205,7 +218,60 @@ namespace My.Calculator
 
         private void button13_Click(object sender, EventArgs e)
         {
-            SendToBack();
+            Visible = false;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Help1 help = new Help1();
+            help.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ymin += yplus;
+            ymax += yplus;
+            button1.PerformClick();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ymin -= yplus;
+            ymax -= yplus;
+            button1.PerformClick();
+        }
+
+        private void chart1_MouseHover(object sender, EventArgs e)
+        {
+            chart1.Focus();
+        }
+        private void chart1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Delta < 0)
+                {
+                    chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+                    chart1.ChartAreas[0].AxisY.ScaleView.ZoomReset();
+                }
+
+                if (e.Delta > 0)
+                {
+                    double xMin = chart1.ChartAreas[0].AxisX.ScaleView.ViewMinimum;
+                    double xMax = chart1.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
+                    double yMin = chart1.ChartAreas[0].AxisY.ScaleView.ViewMinimum;
+                    double yMax = chart1.ChartAreas[0].AxisY.ScaleView.ViewMaximum;
+
+                    double posXStart = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.Location.X) - (xMax - xMin) / 4;
+                    double posXFinish = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.Location.X) + (xMax - xMin) / 4;
+                    double posYStart = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Location.Y) - (yMax - yMin) / 4;
+                    double posYFinish = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Location.Y) + (yMax - yMin) / 4;
+
+                    chart1.ChartAreas[0].AxisX.ScaleView.Zoom(posXStart, posXFinish);
+                    chart1.ChartAreas[0].AxisY.ScaleView.Zoom(posYStart, posYFinish);
+                }
+            }
+            catch { }
         }
     }
 }
