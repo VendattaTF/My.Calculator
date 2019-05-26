@@ -64,7 +64,7 @@
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(326, 62);
             this.StartButton.TabIndex = 6;
-            this.StartButton.Text = "    Calculeaza";
+            this.StartButton.Text = "    Calculate";
             this.StartButton.UseMnemonic = false;
             this.StartButton.UseVisualStyleBackColor = true;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
@@ -73,11 +73,11 @@
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(183, 190);
+            this.label1.Location = new System.Drawing.Point(183, 170);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(324, 49);
             this.label1.TabIndex = 7;
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button13
             // 
@@ -102,7 +102,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(149, 154);
             this.label2.TabIndex = 47;
-            this.label2.Text = "Număr Prim";
+            this.label2.Text = "Prime";
             // 
             // NumarPrim
             // 

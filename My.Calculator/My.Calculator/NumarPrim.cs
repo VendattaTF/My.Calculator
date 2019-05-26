@@ -34,19 +34,20 @@ namespace My.Calculator
                 string str = textBox1.Text;
                 if (prim(Convert.ToInt32(str)) == 1)
                 {
-                    label1.Text = "Este numare prim.";
+                    label1.Text = "It's a prime number.";
                     label1.BackColor = Color.Green;
                 }
                 else
                 {
-                    label1.Text = "Nu este numare prim.";
+                    label1.Text = "It's not a prime number.";
                     label1.BackColor = Color.Blue;
                 }
 
             }
             catch
             {
-                MessageBox.Show("Invalid data.");
+                label1.Text = "Invalid data.";
+                label1.BackColor = Color.Blue;
                 textBox1.Text = "";
             }
             

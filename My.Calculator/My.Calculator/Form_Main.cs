@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace My.Calculator
 {
-    public partial class Form1 : Form
+    public partial class Form_Main : Form
     {
-        public Form1()
+        public Form_Main()
         {
             InitializeComponent();
             SidePanel.Height = button6.Height;
@@ -89,10 +89,10 @@ namespace My.Calculator
         {
             if (e.Button == MouseButtons.Left)
             {
-                // Release the mouse capture started by the mouse down.
+                
                 panel1.Capture = false;
 
-                // Create and send a WM_NCLBUTTONDOWN message.
+                
                 const int WM_NCLBUTTONDOWN = 0x00A1;
                 const int HTCAPTION = 2;
                 Message msg =
@@ -106,10 +106,10 @@ namespace My.Calculator
         {
             if (e.Button == MouseButtons.Left)
             {
-                // Release the mouse capture started by the mouse down.
+                
                 panel3.Capture = false;
 
-                // Create and send a WM_NCLBUTTONDOWN message.
+                
                 const int WM_NCLBUTTONDOWN = 0x00A1;
                 const int HTCAPTION = 2;
                 Message msg =
@@ -124,10 +124,10 @@ namespace My.Calculator
         {
             if (e.Button == MouseButtons.Left)
             {
-                // Release the mouse capture started by the mouse down.
+                
                 label1.Capture = false;
 
-                // Create and send a WM_NCLBUTTONDOWN message.
+                
                 const int WM_NCLBUTTONDOWN = 0x00A1;
                 const int HTCAPTION = 2;
                 Message msg =
@@ -135,6 +135,54 @@ namespace My.Calculator
                         new IntPtr(HTCAPTION), IntPtr.Zero);
                 this.DefWndProc(ref msg);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            quiz1.BringToFront();
+            quiz1.Visible = true;
+            SidePanel.Height = button2.Height;
+            SidePanel.Top = button2.Top;
+        }
+
+        private void button2_MouseMove(object sender, MouseEventArgs e)
+        {
+            SidePanel2.Height = button2.Height;
+            SidePanel2.Top = button2.Top;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            graph1.Visible = false;
+            calculator1.Visible = false;
+            credits1.Visible = false;
+            numarPrim1.Visible = false;
+            quiz1.Visible = false;
+            SidePanel.Height = button7.Height;
+            SidePanel.Top = button7.Top;
+        }
+
+        private void button7_MouseMove(object sender, MouseEventArgs e)
+        {
+            SidePanel2.Height = button7.Height;
+            SidePanel2.Top = button7.Top;
+        }
+
+        private void button8_MouseMove(object sender, MouseEventArgs e)
+        {
+            SidePanel2.Height = button8.Height;
+            SidePanel2.Top = button8.Top;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            graph1.Visible = false;
+            calculator1.Visible = false;
+            credits1.Visible = false;
+            numarPrim1.Visible = false;
+            quiz1.Visible = false;
+            SidePanel.Height = button8.Height;
+            SidePanel.Top = button8.Top;
         }
     }
 }

@@ -51,9 +51,9 @@ namespace My.Calculator
             this.chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
 
             chart1.Series.Clear();
-            chart1.Series.Add("Hallo");
-            chart1.Series["Hallo"].ChartType = SeriesChartType.Line;
-            chart1.Series["Hallo"].Color = Color.Blue;
+            chart1.Series.Add("First");
+            chart1.Series["First"].ChartType = SeriesChartType.Line;
+            chart1.Series["First"].Color = Color.Blue;
 
             
             
@@ -96,7 +96,7 @@ namespace My.Calculator
                     { }
                     else
                     { 
-                        chart1.Series["Hallo"].Points.AddXY(i, y);
+                        chart1.Series["First"].Points.AddXY(i, y);
                     }
 
                 }
@@ -272,6 +272,62 @@ namespace My.Calculator
                 }
             }
             catch { }
+        }
+
+        GraphAdd graphAdd;
+
+        public void graph_null()
+        {
+            graphAdd = null;
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            if (graphAdd == null)
+            {
+                graphAdd = new GraphAdd(this);
+                graphAdd.Show();
+            }
+        }
+
+        public void Add_Exp()
+        {
+
+            button1.PerformClick();
+            chart1.Series.Add("Second");
+            chart1.Series["Second"].ChartType = SeriesChartType.Line;
+            chart1.Series["Second"].Color = Color.Green;
+            string str = graphAdd.get_Expression();
+            try
+            {
+                Argument x = new Argument("x");
+                Expression g = new Expression(str, x);
+                x.setArgumentValue(xmin);
+                double y;
+
+
+
+                for (double i = xmin; i <= xmax; i += 0.01F)
+                {
+
+                    x.setArgumentValue(i);
+                    y = g.calculate();
+                    if (Math.Abs(y) > 99999 || Math.Abs(y) < -99999)
+                    { }
+                    else
+                    {
+                        chart1.Series["Second"].Points.AddXY(i, y);
+                    }
+
+                }
+
+
+            }
+            catch
+            {
+
+            }
+
         }
     }
 }

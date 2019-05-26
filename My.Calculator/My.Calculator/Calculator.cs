@@ -20,7 +20,7 @@ namespace My.Calculator
         {
             InitializeComponent();
             CreateButton();
-            
+
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -74,12 +74,17 @@ namespace My.Calculator
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string str = textBox_Result.Text;
-            str = str.Substring(0, str.Length - 1);
-            textBox_Result.Text = str;
+            try
+            {
+                string str = textBox_Result.Text;
+                str = str.Substring(0, str.Length - 1);
+                textBox_Result.Text = str;
+            }
+            catch { }
+
         }
 
-        
+
         private void CreateButton()
         {
             buttonBack.FlatAppearance.BorderSize = 0;
@@ -95,6 +100,12 @@ namespace My.Calculator
         private void buttonBack_Click(object sender, EventArgs e)
         {
             textBox_Result.Focus();
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            Help1 help = new Help1();
+            help.Show();
         }
     }
 }
