@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using org.mariuszgromada.math.mxparser;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Windows.Forms.DataVisualization;
 
 namespace My.Calculator
 {
@@ -20,6 +21,9 @@ namespace My.Calculator
             InitializeComponent();
             button1.PerformClick();
             this.chart1.MouseWheel += chart1_MouseWheel;
+            chart1.Series.Add("White");
+            chart1.Series["White"].ChartType = SeriesChartType.Line;
+            chart1.Series["White"].Color = Color.White;
         }
 
         float xmax = 12;
@@ -47,25 +51,38 @@ namespace My.Calculator
             chart.AxisX.Interval = xint;
             chart.AxisY.Interval = yint;
 
-            this.chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
-            this.chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+            chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
 
-            chart1.Series.Clear();
-            chart1.Series.Add("First");
+
+
+            if (chart1.Series.IndexOf("First") != -1)
+                chart1.Series["First"].Points.Clear();
+            else
+                chart1.Series.Add("First");
+
             chart1.Series["First"].ChartType = SeriesChartType.Line;
             chart1.Series["First"].Color = Color.Blue;
 
-            
-            
 
 
-            chart1.Series.Add("AxisX");
+
+            if (chart1.Series.IndexOf("AxisX") != -1)
+                chart1.Series["AxisX"].Points.Clear();
+            else
+                chart1.Series.Add("AxisX");
+
             chart1.Series["AxisX"].ChartType = SeriesChartType.Line;
             chart1.Series["AxisX"].Color = Color.Black;
             chart1.Series["AxisX"].Points.AddXY(0, ymax);
             chart1.Series["AxisX"].Points.AddXY(0, ymin);
 
-            chart1.Series.Add("AxisY");
+            if (chart1.Series.IndexOf("AxisY") != -1)
+                chart1.Series["AxisY"].Points.Clear();
+            else
+                chart1.Series.Add("AxisY");
+
+
             chart1.Series["AxisY"].ChartType = SeriesChartType.Line;
             chart1.Series["AxisY"].Color = Color.Black;
             chart1.Series["AxisY"].Points.AddXY(xmin, 0);
@@ -84,8 +101,8 @@ namespace My.Calculator
                 Expression g = new Expression(textBox1.Text, x);
                 x.setArgumentValue(xmin);
                 double y;
-                
-                
+
+
 
                 for (double i = xmin; i <= xmax; i += 0.01F)
                 {
@@ -95,17 +112,17 @@ namespace My.Calculator
                     if (Math.Abs(y) > 99999 || Math.Abs(y) < -99999)
                     { }
                     else
-                    { 
+                    {
                         chart1.Series["First"].Points.AddXY(i, y);
                     }
 
                 }
-                
-                
+
+
             }
             catch
             {
-               
+
             }
 
         }
@@ -276,28 +293,27 @@ namespace My.Calculator
 
         GraphAdd graphAdd;
 
-        public void graph_null()
-        {
-            graphAdd = null;
-        }
+        
 
         private void button15_Click(object sender, EventArgs e)
         {
-            if (graphAdd == null)
-            {
-                graphAdd = new GraphAdd(this);
-                graphAdd.Show();
-            }
+
+            graphAdd = new GraphAdd(this);
+            graphAdd.Show();
+
         }
 
-        public void Add_Exp()
+        public void Add_Exp(string str)
         {
+            
+            if (chart1.Series.IndexOf(str) != -1)
+                chart1.Series[str].Points.Clear();
+            else
+                chart1.Series.Add(str);
 
-            button1.PerformClick();
-            chart1.Series.Add("Second");
-            chart1.Series["Second"].ChartType = SeriesChartType.Line;
-            chart1.Series["Second"].Color = Color.Green;
-            string str = graphAdd.get_Expression();
+            chart1.Series[str].ChartType = SeriesChartType.Line;
+            
+            str = graphAdd.get_Expression();
             try
             {
                 Argument x = new Argument("x");
@@ -316,7 +332,7 @@ namespace My.Calculator
                     { }
                     else
                     {
-                        chart1.Series["Second"].Points.AddXY(i, y);
+                        chart1.Series[str].Points.AddXY(i, y);
                     }
 
                 }
@@ -328,6 +344,47 @@ namespace My.Calculator
 
             }
 
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            chart1.Series.Clear();
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "f(x)")
+            {
+                textBox1.Text = "";
+                textBox1.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "f(x)";
+                textBox1.ForeColor = Color.Silver;
+            }
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "x")
+            {
+                textBox2.Text = "";
+                textBox2.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.Text = "x";
+                textBox2.ForeColor = Color.Silver;
+            }
         }
     }
 }

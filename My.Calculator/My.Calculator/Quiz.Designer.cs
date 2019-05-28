@@ -59,6 +59,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label6 = new System.Windows.Forms.Label();
+            this.button23 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labSucces
@@ -157,7 +158,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(37, 18);
             this.label13.TabIndex = 43;
-            this.label13.Text = "%";
+            this.label13.Text = "/";
             // 
             // lab7
             // 
@@ -180,11 +181,12 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(284, 201);
+            this.label10.Location = new System.Drawing.Point(284, 208);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 18);
             this.label10.TabIndex = 40;
             this.label10.Text = "*";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // lab5
             // 
@@ -344,11 +346,29 @@
             this.label6.TabIndex = 59;
             this.label6.Text = "Quiz";
             // 
+            // button23
+            // 
+            this.button23.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button23.BackgroundImage")));
+            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button23.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button23.FlatAppearance.BorderSize = 0;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button23.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button23.ForeColor = System.Drawing.Color.Transparent;
+            this.button23.Location = new System.Drawing.Point(617, 431);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(66, 42);
+            this.button23.TabIndex = 69;
+            this.button23.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
             // Quiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
+            this.Controls.Add(this.button23);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button_Finish);
@@ -414,5 +434,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button23;
     }
 }

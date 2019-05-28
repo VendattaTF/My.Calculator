@@ -13,15 +13,14 @@ namespace My.Calculator
 {
     public partial class Calculator : UserControl
     {
-        Double resultValue = 0;
-        String operationPerformed = "";
-        bool isOperationPerformed = false;
+        
         public Calculator()
         {
             InitializeComponent();
             CreateButton();
 
         }
+        string result;
 
         private void button10_Click(object sender, EventArgs e)
         {
@@ -30,7 +29,25 @@ namespace My.Calculator
 
         private void button_Click(object sender, EventArgs e)
         {
+            if (textBox_Result.Text == "0.00")
+            {
+                textBox_Result.Text = "";
+                textBox_Result.ForeColor = Color.Black;
+            }
+            Button button = (Button)sender;
+            textBox_Result.Text = textBox_Result.Text + button.Text;
 
+        }
+
+        private void buttonNr_Click(object sender, EventArgs e)
+        {
+            if (textBox_Result.Text == "0.00")
+            {
+                textBox_Result.Text = "";
+                textBox_Result.ForeColor = Color.Black;
+            }
+            if (textBox_Result.Text == result)
+                textBox_Result.Text = "";
             Button button = (Button)sender;
             textBox_Result.Text = textBox_Result.Text + button.Text;
 
@@ -41,6 +58,7 @@ namespace My.Calculator
             string str = textBox_Result.Text;
             Expression f = new Expression(str);
             textBox_Result.Text = f.calculate().ToString();
+            result = textBox_Result.Text;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -106,6 +124,27 @@ namespace My.Calculator
         {
             Help1 help = new Help1();
             help.Show();
+        }
+
+
+        private void textBox_Result_Enter(object sender, EventArgs e)
+        {
+            if (textBox_Result.Text == "NaN")
+                textBox_Result.Text = "";
+            if(textBox_Result.Text=="0.00")
+            {
+                textBox_Result.Text = "";
+                textBox_Result.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBox_Result_Leave(object sender, EventArgs e)
+        {
+            if (textBox_Result.Text == "")
+            {
+                textBox_Result.Text = "0.00";
+                textBox_Result.ForeColor = Color.Silver;
+            }
         }
     }
 }

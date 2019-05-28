@@ -99,5 +99,12 @@ namespace My.Calculator
             if (e.KeyCode == Keys.Enter)
                 button_Finish.PerformClick();
         }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("/ return integer part of a fraction. (7/3=2)");
+        }
+
+        
     }
 }

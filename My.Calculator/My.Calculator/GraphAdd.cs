@@ -21,13 +21,13 @@ namespace My.Calculator
 
         private void button2_Click(object sender, EventArgs e)
         {
-            graph.Add_Exp();
+            graph.Add_Exp(textBox1.Text);
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             this.Close();
-            graph.graph_null();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)

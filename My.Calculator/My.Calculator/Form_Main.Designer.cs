@@ -42,13 +42,14 @@
             this.SidePanel2 = new System.Windows.Forms.Panel();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.calculator1 = new My.Calculator.Calculator();
-            this.credits1 = new My.Calculator.Credits();
-            this.graph1 = new My.Calculator.Graph();
-            this.numarPrim1 = new My.Calculator.NumarPrim();
             this.quiz1 = new My.Calculator.Quiz();
+            this.numarPrim1 = new My.Calculator.NumarPrim();
+            this.graph1 = new My.Calculator.Graph();
+            this.credits1 = new My.Calculator.Credits();
+            this.area1 = new My.Calculator.Area();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +73,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(190, 541);
             this.panel1.TabIndex = 18;
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MoveForm_MouseDown);
             // 
             // button8
             // 
@@ -87,11 +87,11 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(181, 76);
             this.button8.TabIndex = 25;
-            this.button8.Text = "             ...";
+            this.button8.Text = "             Area";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
-            this.button8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button8_MouseMove);
+            this.button8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_MouseMove);
             // 
             // button7
             // 
@@ -111,7 +111,7 @@
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            this.button7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button7_MouseMove);
+            this.button7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_MouseMove);
             // 
             // button2
             // 
@@ -130,7 +130,7 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            this.button2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button2_MouseMove);
+            this.button2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_MouseMove);
             // 
             // button1
             // 
@@ -149,7 +149,7 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
+            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_MouseMove);
             // 
             // button6
             // 
@@ -168,7 +168,7 @@
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
-            this.button6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button6_MouseMove);
+            this.button6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_MouseMove);
             // 
             // button5
             // 
@@ -187,7 +187,7 @@
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
-            this.button5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button5_MouseMove);
+            this.button5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_MouseMove);
             // 
             // button4
             // 
@@ -261,23 +261,13 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.panel3.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(190, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(686, 23);
             this.panel3.TabIndex = 20;
-            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(190, 490);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(686, 51);
-            this.label1.TabIndex = 19;
-            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
             // 
             // pictureBox1
             // 
@@ -289,6 +279,17 @@
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.panel2.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(190, 491);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(686, 50);
+            this.panel2.TabIndex = 27;
+            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
+            // 
             // calculator1
             // 
             this.calculator1.BackColor = System.Drawing.Color.Silver;
@@ -298,21 +299,13 @@
             this.calculator1.Size = new System.Drawing.Size(686, 476);
             this.calculator1.TabIndex = 22;
             // 
-            // credits1
+            // quiz1
             // 
-            this.credits1.BackColor = System.Drawing.Color.Silver;
-            this.credits1.Location = new System.Drawing.Point(190, 20);
-            this.credits1.Name = "credits1";
-            this.credits1.Size = new System.Drawing.Size(686, 484);
-            this.credits1.TabIndex = 23;
-            // 
-            // graph1
-            // 
-            this.graph1.BackColor = System.Drawing.Color.Black;
-            this.graph1.Location = new System.Drawing.Point(190, 20);
-            this.graph1.Name = "graph1";
-            this.graph1.Size = new System.Drawing.Size(686, 476);
-            this.graph1.TabIndex = 24;
+            this.quiz1.BackColor = System.Drawing.Color.Silver;
+            this.quiz1.Location = new System.Drawing.Point(190, 20);
+            this.quiz1.Name = "quiz1";
+            this.quiz1.Size = new System.Drawing.Size(686, 476);
+            this.quiz1.TabIndex = 26;
             // 
             // numarPrim1
             // 
@@ -322,13 +315,29 @@
             this.numarPrim1.Size = new System.Drawing.Size(686, 476);
             this.numarPrim1.TabIndex = 25;
             // 
-            // quiz1
+            // graph1
             // 
-            this.quiz1.BackColor = System.Drawing.Color.Silver;
-            this.quiz1.Location = new System.Drawing.Point(190, 20);
-            this.quiz1.Name = "quiz1";
-            this.quiz1.Size = new System.Drawing.Size(686, 476);
-            this.quiz1.TabIndex = 26;
+            this.graph1.BackColor = System.Drawing.Color.Black;
+            this.graph1.Location = new System.Drawing.Point(190, 20);
+            this.graph1.Name = "graph1";
+            this.graph1.Size = new System.Drawing.Size(686, 476);
+            this.graph1.TabIndex = 24;
+            // 
+            // credits1
+            // 
+            this.credits1.BackColor = System.Drawing.Color.Silver;
+            this.credits1.Location = new System.Drawing.Point(190, 20);
+            this.credits1.Name = "credits1";
+            this.credits1.Size = new System.Drawing.Size(686, 484);
+            this.credits1.TabIndex = 23;
+            // 
+            // area1
+            // 
+            this.area1.BackColor = System.Drawing.Color.Black;
+            this.area1.Location = new System.Drawing.Point(190, 20);
+            this.area1.Name = "area1";
+            this.area1.Size = new System.Drawing.Size(686, 476);
+            this.area1.TabIndex = 28;
             // 
             // Form_Main
             // 
@@ -336,11 +345,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(876, 541);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.area1);
             this.Controls.Add(this.calculator1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.quiz1);
             this.Controls.Add(this.numarPrim1);
             this.Controls.Add(this.graph1);
@@ -368,7 +378,6 @@
         private System.Windows.Forms.Panel SidePanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Calculator calculator1;
@@ -378,6 +387,8 @@
         private Quiz quiz1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Panel panel2;
+        private Area area1;
     }
 }
 
