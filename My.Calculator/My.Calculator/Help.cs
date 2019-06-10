@@ -48,5 +48,7 @@ namespace My.Calculator
                 this.DefWndProc(ref msg);
             }
         }
+
+        
     }
 }

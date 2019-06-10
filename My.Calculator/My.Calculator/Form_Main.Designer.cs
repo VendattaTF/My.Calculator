@@ -348,13 +348,13 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.area1);
-            this.Controls.Add(this.calculator1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.quiz1);
-            this.Controls.Add(this.numarPrim1);
             this.Controls.Add(this.graph1);
             this.Controls.Add(this.credits1);
+            this.Controls.Add(this.area1);
+            this.Controls.Add(this.calculator1);
+            this.Controls.Add(this.quiz1);
+            this.Controls.Add(this.numarPrim1);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Main";

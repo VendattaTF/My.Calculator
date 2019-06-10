@@ -50,14 +50,13 @@ namespace My.Calculator
                 textBox_Result.Text = "";
             Button button = (Button)sender;
             textBox_Result.Text = textBox_Result.Text + button.Text;
-
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
             string str = textBox_Result.Text;
-            Expression f = new Expression(str);
-            textBox_Result.Text = f.calculate().ToString();
+            MathParser g = new MathParser();
+            textBox_Result.Text = g.Calculate(str).ToString();
             result = textBox_Result.Text;
         }
 

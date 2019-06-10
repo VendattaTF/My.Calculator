@@ -95,6 +95,7 @@
     <Compile Include="Help.Designer.cs">
       <DependentUpon>Help.cs</DependentUpon>
     </Compile>
+    <Compile Include="MathParser.cs" />
     <Compile Include="NumarPrim.cs">
       <SubType>UserControl</SubType>
     </Compile>

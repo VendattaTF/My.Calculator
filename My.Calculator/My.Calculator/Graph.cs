@@ -97,28 +97,24 @@ namespace My.Calculator
 
             try
             {
-                Argument x = new Argument("x");
-                Expression g = new Expression(textBox1.Text, x);
-                x.setArgumentValue(xmin);
+                MathParser g = new MathParser();
                 double y;
-
-
-
-                for (double i = xmin; i <= xmax; i += 0.01F)
-                {
-
-                    x.setArgumentValue(i);
-                    y = g.calculate();
-                    if (Math.Abs(y) > 99999 || Math.Abs(y) < -99999)
-                    { }
-                    else
+                if (g.check(textBox1.Text))
+                    for (double i = xmin; i <= xmax; i += 0.01F)
                     {
-                        chart1.Series["First"].Points.AddXY(i, y);
+
+                        g.setArgumentValue(i);
+                        y = g.Calculate(textBox1.Text);
+                        if (y != double.NaN)
+                            if (Math.Abs(y) > 99999 || Math.Abs(y) < -99999)
+                            { }
+                            else
+                            {
+                                chart1.Series["First"].Points.AddXY(i, y);
+                            }
+
                     }
-
-                }
-
-
+                else MessageBox.Show("Invalid expression.");
             }
             catch
             {
@@ -205,13 +201,12 @@ namespace My.Calculator
 
         private void button12_Click(object sender, EventArgs e)
         {
+            MathParser g = new MathParser();
             try
             {
-                Argument x = new Argument("x");
-                Expression g = new Expression(textBox1.Text, x);
                 string str = textBox2.Text;
-                x.setArgumentValue(Convert.ToDouble(str));
-                labelResult.Text = g.calculate().ToString();
+                g.setArgumentValue(Convert.ToDouble(str));
+                labelResult.Text = g.Calculate(textBox1.Text).ToString();
             }
             catch { }
 
@@ -305,45 +300,30 @@ namespace My.Calculator
 
         public void Add_Exp(string str)
         {
-            
             if (chart1.Series.IndexOf(str) != -1)
                 chart1.Series[str].Points.Clear();
             else
                 chart1.Series.Add(str);
-
             chart1.Series[str].ChartType = SeriesChartType.Line;
-            
             str = graphAdd.get_Expression();
             try
             {
-                Argument x = new Argument("x");
-                Expression g = new Expression(str, x);
-                x.setArgumentValue(xmin);
+                MathParser g = new MathParser();
                 double y;
-
-
-
                 for (double i = xmin; i <= xmax; i += 0.01F)
                 {
-
-                    x.setArgumentValue(i);
-                    y = g.calculate();
+                    g.setArgumentValue(i);
+                    y = g.Calculate(str);
                     if (Math.Abs(y) > 99999 || Math.Abs(y) < -99999)
                     { }
                     else
                     {
+                        if(y!=double.NaN)
                         chart1.Series[str].Points.AddXY(i, y);
                     }
-
                 }
-
-
             }
-            catch
-            {
-
-            }
-
+            catch{}
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -385,6 +365,11 @@ namespace My.Calculator
                 textBox2.Text = "x";
                 textBox2.ForeColor = Color.Silver;
             }
+        }
+
+        private void Graph_Load(object sender, EventArgs e)
+        {
+            button1.PerformClick();
         }
     }
 }
