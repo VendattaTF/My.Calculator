@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using org.mariuszgromada.math.mxparser;
-
 namespace My.Calculator
 {
     public partial class Calculator : UserControl

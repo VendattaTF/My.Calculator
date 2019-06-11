@@ -225,7 +225,6 @@ namespace My.Calculator
                     return varX;
                 }
                 else
-
                 {
                     dbl = dbl + expr[index].ToString();
                     index++;
@@ -240,8 +239,6 @@ namespace My.Calculator
                 return double.NaN;
             else
                 return double.Parse(dbl);
-
-
         }
 
 

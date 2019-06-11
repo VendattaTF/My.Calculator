@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using org.mariuszgromada.math.mxparser;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms.DataVisualization;
 
