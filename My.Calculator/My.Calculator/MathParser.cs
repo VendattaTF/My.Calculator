@@ -239,7 +239,5 @@ namespace My.Calculator
                 return double.Parse(dbl);
         }
 
-
-
     }
 }
