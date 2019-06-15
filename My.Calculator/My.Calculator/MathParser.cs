@@ -185,8 +185,6 @@ namespace My.Calculator
                     return Math.Sin(x);
                 else
                     return Math.Tan(x);
-
-
             }
         }
         //Return the value following after an operand.
